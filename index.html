@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hedi 18th Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at top, #0a0a0a, #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  color: #d4af37;
+}
+
+/* ✨ background glow */
+.glow {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(212,175,55,0.08), transparent 60%);
+}
+
+/* 🎁 Envelope button */
+.envelope {
+  width: 220px;
+  height: 140px;
+  background: linear-gradient(145deg, #111, #000);
+  border: 1px solid #d4af37;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+  box-shadow: 0 0 25px rgba(212,175,55,0.15);
+}
+
+.envelope:hover {
+  transform: scale(1.05);
+}
+
+/* flap */
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(145deg, #1a1a1a, #000);
+  border-bottom: 1px solid #d4af37;
+  transform-origin: top;
+  transition: transform 0.8s ease;
+}
+
+/* OPEN STATE */
+.envelope.open::before {
+  transform: rotateX(180deg);
+}
+
+/* ✉️ letter */
+.letter {
+  position: absolute;
+  width: 80%;
+  max-width: 500px;
+  background: rgba(0,0,0,0.92);
+  border: 1px solid #d4af37;
+  padding: 30px;
+  text-align: center;
+  border-radius: 16px;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition: 1s ease;
+  box-shadow: 0 0 40px rgba(212,175,55,0.2);
+}
+
+/* show letter */
+.letter.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* text */
+h1 {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 8px 0;
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+/* button text */
+.start-text {
+  position: absolute;
+  bottom: -40px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<!-- 🎁 envelope -->
+<div class="envelope" id="envelope" onclick="openInvite()">
+</div>
+<div class="start-text">Tap to open invitation</div>
+
+<!-- 📜 letter -->
+<div class="letter" id="letter">
+  <h1>YOU ARE INVITED</h1>
+
+  <p>✨ Hedi’s 18th Birthday ✨</p>
+
+  <p>“You are one of the selected guests.”</p>
+
+  <p>📅 18 April</p>
+  <p>📍 My Home</p>
+  <p>⏰ 3:00 PM (Evening Celebration)</p>
+
+  <p><b>Dress Code: Black & Gold</b></p>
+</div>
+
+<script>
+function openInvite() {
+  document.getElementById("envelope").classList.add("open");
+
+  setTimeout(() => {
+    document.getElementById("letter").classList.add("show");
+  }, 800);
+}
+</script>
+
+</body>
+</html>
