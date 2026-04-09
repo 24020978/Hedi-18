@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hedi's 18th Birthday</title>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  font-family: Georgia, serif;
+  color: gold;
+}
+
+/* 🌑 Floating balloons */
+.balloon {
+  position: absolute;
+  bottom: -150px;
+  width: 40px;
+  height: 55px;
+  border-radius: 50%;
+  animation: floatUp 10s infinite ease-in;
+  opacity: 0.8;
+}
+
+.balloon:after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 40px;
+  background: white;
+  top: 55px;
+  left: 50%;
+}
+
+/* Gold + black balloons */
+.gold { background: gold; }
+.black { background: #111; border: 1px solid gold; }
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* 🎁 Invitation card */
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(0,0,0,0.85);
+  border: 1px solid gold;
+  padding: 40px;
+  text-align: center;
+  border-radius: 20px;
+  width: 320px;
+  box-shadow: 0 0 40px rgba(255,215,0,0.2);
+
+  opacity: 0;
+  animation: openCard 2s ease forwards;
+  animation-delay: 2s;
+}
+
+@keyframes openCard {
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+h1 {
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+p {
+  font-size: 15px;
+  margin: 6px 0;
+}
+
+/* ✨ Intro text */
+.intro {
+  position: absolute;
+  top: 45%;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  animation: fadeOut 2s ease forwards;
+  animation-delay: 2s;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: scale(0.9); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎈 Balloons -->
+<script>
+function createBalloon() {
+  const b = document.createElement("div");
+  b.classList.add("balloon");
+
+  const colors = ["gold", "black"];
+  b.classList.add(colors[Math.floor(Math.random() * 2)]);
+
+  b.style.left = Math.random() * window.innerWidth + "px";
+  b.style.animationDuration = (6 + Math.random() * 5) + "s";
+
+  document.body.appendChild(b);
+
+  setTimeout(() => {
+    b.remove();
+  }, 10000);
+}
+
+setInterval(createBalloon, 300);
+</script>
+
+<!-- ✨ Intro -->
+<div class="intro">
+  <h2>You are one of the luckiest persons on Earth…</h2>
+</div>
+
+<!-- 🎁 Card -->
+<div class="card">
+  <h1>YOU’RE INVITED</h1>
+  <p><b>Hedi is turning 18</b></p>
+  <p>✨ Birthday of the Century ✨</p>
+
+  <p>📅 18 April</p>
+  <p>📍 My Home</p>
+  <p>⏰ 3:00 PM (Evening)</p>
+
+  <p><b>Dress Code: Black & Gold</b></p>
+</div>
+
+</body>
+</html>
